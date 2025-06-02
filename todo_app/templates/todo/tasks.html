@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Tarefas da Lista: "{{ todo_list['title'] }}"{% endblock %}</h1>
+    <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out inline-block mt-4" href="{{ url_for('todo.create_task', list_id=todo_list['id']) }}">Nova Tarefa</a>
+{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('todo.index') }}" class="text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out mb-4 inline-block">&larr; Voltar para Listas</a>
+
+    {% if not tasks %}
+        <p class="text-gray-600 mt-4">Esta lista não tem nenhuma tarefa ainda. Adicione uma!</p>
+    {% else %}
+        <div class="mt-6 space-y-4">
+            {% for task in tasks %}
+                <div class="bg-white rounded-lg shadow-md p-4 border border-gray-200 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <form action="{{ url_for('todo.toggle_task', list_id=todo_list['id'], task_id=task['id']) }}" method="post" class="inline-block">
+                            <input type="checkbox" name="completed" onchange="this.form.submit()" {% if task['completed'] %}checked{% endif %} class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                        </form>
+                        <span class="ml-3 text-lg text-gray-800 {% if task['completed'] %}line-through text-gray-500{% endif %}">{{ task['description'] }}</span>
+                        <p class="text-sm text-gray-500 mt-1">Criada em: {{ task['created'].strftime('%Y-%m-%d %H:%M') }}</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 ml-4">
+                        <a class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out" href="{{ url_for('todo.update_task', list_id=todo_list['id'], task_id=task['id']) }}">Editar</a>
+                        <form action="{{ url_for('todo.delete_task', list_id=todo_list['id'], task_id=task['id']) }}" method="post" onsubmit="return confirm('Tem certeza que deseja deletar esta tarefa?');">
+                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">Deletar</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

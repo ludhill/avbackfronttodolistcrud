@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Criar Nova Lista de Tarefas{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post" class="space-y-4">
+        <div>
+            <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Título da Lista</label>
+            <input type="text" name="title" id="title" value="{{ request.form['title'] or '' }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <input type="submit" value="Salvar Lista" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+        <a href="{{ url_for('todo.index') }}" class="ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-block transition duration-300 ease-in-out">Cancelar</a>
+    </form>
+{% endblock %}

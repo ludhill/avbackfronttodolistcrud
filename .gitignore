@@ -1,0 +1,38 @@
+# Ambientes Virtuais
+.venv/
+venv/
+ENV/
+env/
+lib/
+lib64/
+include/
+bin/
+Scripts/
+
+# Arquivos Python compilados e caches
+*.pyc
+*.pyo
+__pycache__/
+.pytest_cache/
+
+# Arquivos de instância Flask (configurações secretas, banco de dados)
+instance/
+
+# Arquivos de cobertura de teste
+.coverage
+htmlcov/
+
+# Arquivos de build/distribuição
+dist/
+build/
+*.egg-info/
+
+# Arquivos de IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
