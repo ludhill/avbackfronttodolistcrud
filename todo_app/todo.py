@@ -175,7 +175,7 @@ def create_task(list_id):
             db.commit()
             return redirect(url_for('todo.tasks', list_id=list_id))
 
-    return render_template('todo/create_task.html', todo_list=todo_list)
+    return render_template('todo/create_tasks.html', todo_list=todo_list)
 
 @bp.route('/<int:list_id>/<int:task_id>/update_task', methods=('GET', 'POST'))
 @login_required # Exige autenticação para atualizar uma tarefa
