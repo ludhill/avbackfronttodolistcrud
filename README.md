@@ -1,23 +1,23 @@
 # avaliação backfront to-do-list + crud
 Aplicativo para validar a primeira avaliação de (back end para front end) em Flask com python, todolist com crud
 
-# Testar manualmente
+#### # Testar manualmente 
 
 1 - Clonar repositorio
-
+`bash: git clone  https://github.com/ludhill/avbackfronttodolistcrud.git`
 2 - instalar o venv
-  python3 -m venv .venv
+ `cmd: python3 -m venv .venv`
 
 3 - Ativar o ambiente virtual source 
 
 venv/bin/activate # Linux/macOS 
-  .venv\Scripts\activate # Windows
+` venv:: .venv\Scripts\activate # Windows`
 
 4 - Inicializar o banco de dados 
-  flask --app flaskr init-db
+` venv: flask --app todo_app init-db`
 
 5 - Executar a aplicação 
-  flask --app flaskr run --debug
+`venv: flask --app todo_app run --debug`
 
 6 - Testar manualmente Acesse as rotas principais da aplicação no navegador:
 
@@ -30,4 +30,4 @@ venv/bin/activate # Linux/macOS
 /todo/ → Veja se as tarefas.
 
 7 - Testar automaticamente 
- pip install pytest pytest
+`venv: pip install pytest pytest`
